@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         userRepository.initDefaultUser();
 
 
+
         //
         EditText emailEditText = findViewById(R.id.email_edittext);
         EditText passwordEditText = findViewById(R.id.password_edittext);
