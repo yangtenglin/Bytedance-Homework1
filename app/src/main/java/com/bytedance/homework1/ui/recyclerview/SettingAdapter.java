@@ -3,11 +3,13 @@ package com.bytedance.homework1.ui.recyclerview;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bytedance.homework1.R;
+import com.bytedance.homework1.ui.userinfo.ProfileActivity;
 
 import java.util.List;
 
@@ -39,6 +41,11 @@ public class SettingAdapter extends RecyclerView.Adapter<SettingViewHolder>{
         SettingBean settingBean = mSettingList.get(position);
         // 调⽤ViewHolder的bindData⽅法绑定数据
         holder.bindData(settingBean);
+
+        holder.itemView.setOnClickListener(v -> {
+            Toast.makeText(holder.itemView.getContext(), "点击了第" + ( position + 1 ) + "行: "
+                    + settingBean.getTitle(), Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
