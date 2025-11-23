@@ -13,17 +13,30 @@ import com.bytedance.homework1.data.result.Result;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class UserRepository {
 
     private final UserDao userDao;
     private final ExecutorService executor;
-    private static final String TAG = "UserRepository"; // 添加此行
+    private static final String TAG = "UserRepository";
+
+    private static final int CORE_POOL_SIZE = 2;
+    private static final int MAXIMUM_POOL_SIZE = 4;
+    private static final long KEEP_ALIVE_TIME = 60L;
 
     public UserRepository(Application application) {
         AppDatabase database = AppDatabase.getDatabase(application);
         this.userDao = database.userDao();
-        this.executor = Executors.newSingleThreadExecutor();
+        this.executor = new ThreadPoolExecutor(
+                CORE_POOL_SIZE,
+                MAXIMUM_POOL_SIZE,
+                KEEP_ALIVE_TIME,
+                TimeUnit.SECONDS,
+                new LinkedBlockingQueue<>()
+        );
     }
 
     /**
@@ -35,7 +48,7 @@ public class UserRepository {
                 if (userDao.findUserByEmail("ytl@bytedance.com") == null) {
                     User defaultUser = new User();
                     defaultUser.email = "ytl@bytedance.com";
-                    defaultUser.password = "123456"; // 在实际应用中，密码应该被加密
+                    defaultUser.password = "123456";
                     userDao.insertUser(defaultUser);
                     Log.d(TAG, "默认用户 'ytl@bytedance.com' 创建成功。");
                 } else {
@@ -53,7 +66,6 @@ public class UserRepository {
         executor.execute(() -> {
             try {
                 User user = userDao.findUserByEmailAndPassword(email, password);
-                // 使用 postValue 在后台线程更新 LiveData
                 resultLiveData.postValue(new Result.Success<>(user != null));
             } catch (Exception e) {
                 resultLiveData.postValue(new Result.Error<>(e));
@@ -75,7 +87,7 @@ public class UserRepository {
                 }
                 User newUser = new User();
                 newUser.email = email;
-                newUser.password = password; // 实际项目中应加密
+                newUser.password = password;
                 userDao.insertUser(newUser);
                 // 注册成功
                 resultLiveData.postValue(new Result.Success<>(true));
