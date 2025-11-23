@@ -1,0 +1,19 @@
+<resources>
+    <string-array name="setting_titles">
+        <item>个人信息</item>
+        <item>我的收藏</item>
+        <item>浏览历史</item>
+        <item>设置</item>
+        <item>关于我们</item>
+        <item>意见反馈</item>
+    </string-array>
+
+    <string-array name="setting_icons">
+        <item>@drawable/ic_personal_info</item>
+        <item>@drawable/ic_collection</item>
+        <item>@drawable/ic_history</item>
+        <item>@drawable/ic_settings</item>
+        <item>@drawable/ic_about</item>
+        <item>@drawable/ic_feedback</item>
+    </string-array>
+</resources>
