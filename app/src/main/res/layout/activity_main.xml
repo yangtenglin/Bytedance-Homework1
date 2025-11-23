@@ -40,7 +40,7 @@
         android:layout_height="56dp"
         android:hint="请输入邮箱"
         android:inputType="textEmailAddress"
-        android:drawableStart="@android:drawable/ic_menu_send"
+        android:drawableStart="@drawable/ic_email_resized"
         android:drawablePadding="12dp"
         android:background="@drawable/edittext_background"
         android:paddingHorizontal="16dp"
@@ -55,7 +55,7 @@
         android:layout_height="56dp"
         android:hint="请输入密码"
         android:inputType="textPassword"
-        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:drawableStart="@drawable/ic_lock_resized"
         android:drawablePadding="12dp"
         android:background="@drawable/edittext_background"
         android:paddingHorizontal="16dp"
@@ -63,16 +63,18 @@
         android:layout_marginTop="16dp" />
 
     <!-- 显示/隐藏密码按钮 -->
-    <Button
-        android:id="@+id/toggle_password_btn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@null"
-        android:drawableStart="@android:drawable/btn_star"
+    <ImageButton
+        android:id="@+id/toggle_password_visibility_btn"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_visibility_off"
+        android:scaleType="centerInside"
         app:layout_constraintTop_toTopOf="@id/password_edittext"
         app:layout_constraintBottom_toBottomOf="@id/password_edittext"
         app:layout_constraintEnd_toEndOf="@id/password_edittext"
-        android:layout_marginEnd="8dp" />
+        android:layout_marginEnd="16dp"
+        android:contentDescription="Toggle password visibility" />
 
     <!-- 忘记密码链接 -->
     <TextView
@@ -191,16 +193,33 @@
     </LinearLayout>
 
     <!-- 注册链接 -->
-    <TextView
-        android:id="@+id/register_text"
+    <LinearLayout
+        android:id="@+id/register_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="还没有账户？立即注册"
-        android:textColor="#2196F3"
-        android:textSize="14sp"
+        android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/social_login_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="24dp" />
+        android:layout_marginTop="24dp">
+
+        <TextView
+            android:id="@+id/register_prompt_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还没有账户？"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/register_link_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即注册"
+            android:textColor="#2196F3"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
