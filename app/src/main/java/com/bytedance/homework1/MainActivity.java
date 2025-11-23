@@ -13,6 +13,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bytedance.homework1.data.repository.UserRepository;
 import com.bytedance.homework1.ui.userinfo.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +22,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //初始化添加默认账号
+        UserRepository userRepository = new UserRepository(getApplication());
+        userRepository.initDefaultUser();
 
         // 密码眼睛按钮功能实现
         EditText passwordEditText = findViewById(R.id.password_edittext);
@@ -37,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 passwordEditText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 togglePasswordVisibilityButton.setImageResource(R.drawable.ic_visibility_off); // 切换到“闭眼”图标
             }
-            // 将光标移动到文本末尾
             passwordEditText.setSelection(passwordEditText.getText().length());
         });
 

@@ -24,4 +24,10 @@ public interface UserDao {
 
     @Update
     void updateUser(User user);
+
+    @Query("SELECT * FROM users WHERE email = :email AND password = :password LIMIT 1")
+    User findUserByEmailAndPassword(String email, String password);
+
+    @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
+    User findUserByEmail(String email);
 }
