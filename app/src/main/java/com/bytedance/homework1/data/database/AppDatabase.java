@@ -9,7 +9,8 @@ import androidx.room.RoomDatabase;
 import com.bytedance.homework1.data.database.dao.UserDao;
 import com.bytedance.homework1.data.database.entity.User;
 
-@Database(entities = {User.class}, version = 1, exportSchema = false)
+// TODO: 数据库版本变动应该添加迁移策略
+@Database(entities = {User.class}, version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     public abstract UserDao userDao();

@@ -64,11 +64,13 @@ public class UserRepository {
         MutableLiveData<Result<Boolean>> resultLiveData = new MutableLiveData<>();
 
         executor.execute(() -> {
-            try {
-                User user = userDao.findUserByEmailAndPassword(email, password);
-                resultLiveData.postValue(new Result.Success<>(user != null));
-            } catch (Exception e) {
-                resultLiveData.postValue(new Result.Error<>(e));
+            User user = userDao.findUserByEmailAndPassword(email, password);
+            if (user != null) {
+                // 找到了用户，登录成功
+                resultLiveData.postValue(new Result.Success<>(true));
+            } else {
+                // 未找到用户，登录失败
+                resultLiveData.postValue(new Result.Error(new Exception("邮箱或密码错误")));
             }
         });
 
