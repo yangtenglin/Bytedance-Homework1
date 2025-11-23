@@ -136,31 +136,58 @@
         android:layout_marginTop="32dp">
 
         <!-- 微信登录按钮 -->
-        <Button
+        <LinearLayout
             android:id="@+id/wechat_login_btn"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:text="微信登录"
-            android:textColor="#07C160"
-            android:background="#F5F5F5"
-            android:drawableStart="@drawable/ic_weixin"
-            android:drawablePadding="8dp"
             android:layout_weight="1"
-            android:layout_marginEnd="8dp" />
+            android:layout_marginEnd="8dp"
+            android:background="#F5F5F5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_weixin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="微信登录"
+                android:textColor="#000000"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
 
         <!-- Apple登录按钮 -->
-        <Button
-            android:id="@+id/apple_login_btn"
+        <LinearLayout
+            android:id="@+id/wechat_login_btn"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:text="Apple登录"
-            android:textColor="#000000"
-            android:background="#F5F5F5"
-            android:backgroundTint="@null"
-            android:drawableStart="@android:drawable/btn_default"
-            android:drawablePadding="8dp"
             android:layout_weight="1"
-            android:layout_marginStart="8dp" />
+            android:layout_marginEnd="8dp"
+            android:background="#F5F5F5"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_apple" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apple登录"
+                android:textColor="#000000"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <!-- 注册链接 -->
