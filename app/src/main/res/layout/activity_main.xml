@@ -164,7 +164,7 @@
 
         <!-- Apple登录按钮 -->
         <LinearLayout
-            android:id="@+id/wechat_login_btn"
+            android:id="@+id/apple_login_btn"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_weight="1"
