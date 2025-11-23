@@ -5,24 +5,174 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="24dp"
     tools:context=".MainActivity">
 
+    <!-- 标题 -->
     <TextView
+        android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="欢迎登录"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="60dp" />
 
+    <!-- 副标题 -->
+    <TextView
+        android:id="@+id/subtitle_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请登录您的账户"
+        android:textSize="16sp"
+        android:textColor="#666666"
+        app:layout_constraintTop_toBottomOf="@id/title_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- 邮箱输入框 -->
+    <EditText
+        android:id="@+id/email_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="请输入邮箱"
+        android:inputType="textEmailAddress"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="12dp"
+        android:background="@drawable/edittext_background"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/subtitle_text"
+        android:layout_marginTop="40dp" />
+
+
+    <!-- 密码输入框 -->
+    <EditText
+        android:id="@+id/password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="请输入密码"
+        android:inputType="textPassword"
+        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:drawablePadding="12dp"
+        android:background="@drawable/edittext_background"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/email_edittext"
+        android:layout_marginTop="16dp" />
+
+    <!-- 显示/隐藏密码按钮 -->
+    <Button
+        android:id="@+id/toggle_password_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@null"
+        android:drawableStart="@android:drawable/btn_star"
+        app:layout_constraintTop_toTopOf="@id/password_edittext"
+        app:layout_constraintBottom_toBottomOf="@id/password_edittext"
+        app:layout_constraintEnd_toEndOf="@id/password_edittext"
+        android:layout_marginEnd="8dp" />
+
+    <!-- 忘记密码链接 -->
+    <TextView
+        android:id="@+id/forgot_password_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="忘记密码？"
+        android:textColor="#2196F3"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/password_edittext"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp" />
+
+    <!-- 登录按钮 -->
     <Button
         android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="登录"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/button_background"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/forgot_password_text"
+        android:layout_marginTop="32dp" />
+
+    <!-- 分割线 -->
+    <View
+        android:id="@+id/divider_line"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        app:layout_constraintTop_toBottomOf="@id/login_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <!-- 或者文本 -->
+    <TextView
+        android:id="@+id/or_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="登录"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="或者"
+        android:textColor="#9E9E9E"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="@id/divider_line"
+        app:layout_constraintBottom_toBottomOf="@id/divider_line"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 第三方登录按钮容器 -->
+    <LinearLayout
+        android:id="@+id/social_login_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="2"
+        app:layout_constraintTop_toBottomOf="@id/divider_line"
+        android:layout_marginTop="32dp">
+
+        <!-- 微信登录按钮 -->
+        <Button
+            android:id="@+id/wechat_login_btn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="微信登录"
+            android:textColor="#07C160"
+            android:background="@drawable/social_button_background"
+            android:drawableStart="@android:drawable/btn_star"
+            android:drawablePadding="8dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Apple登录按钮 -->
+        <Button
+            android:id="@+id/apple_login_btn"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="Apple登录"
+            android:textColor="#000000"
+            android:background="@drawable/social_button_background"
+            android:drawableStart="@android:drawable/btn_default"
+            android:drawablePadding="8dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
+
+    <!-- 注册链接 -->
+    <TextView
+        android:id="@+id/register_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="还没有账户？立即注册"
+        android:textColor="#2196F3"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/social_login_container"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginTop="24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
