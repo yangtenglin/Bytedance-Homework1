@@ -75,6 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         });
+
+        findViewById(R.id.wechat_login_btn).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "微信登录测试", Toast.LENGTH_SHORT).show();
+        });
+
+        findViewById(R.id.apple_login_btn).setOnClickListener(v -> {
+            Toast.makeText(MainActivity.this, "Apple登录测试", Toast.LENGTH_SHORT).show();
+        });
     }
 
 }
