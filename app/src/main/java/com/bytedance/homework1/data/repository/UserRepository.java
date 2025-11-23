@@ -45,9 +45,9 @@ public class UserRepository {
     public void initDefaultUser() {
         executor.execute(() -> {
             try {
-                if (userDao.findUserByEmail("ytl@bytedance.com") == null) {
+                if (userDao.findUserByEmail("ytl@qq.com") == null) {
                     User defaultUser = new User();
-                    defaultUser.email = "ytl@bytedance.com";
+                    defaultUser.email = "ytl@qq.com";
                     defaultUser.password = "123456";
                     userDao.insertUser(defaultUser);
                     Log.d(TAG, "默认用户 'ytl@bytedance.com' 创建成功。");
