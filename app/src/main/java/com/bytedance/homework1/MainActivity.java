@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        EdgeToEdge.enable(this);
         //初始化添加默认账号
         UserRepository userRepository = new UserRepository(getApplication());
         userRepository.initDefaultUser();
